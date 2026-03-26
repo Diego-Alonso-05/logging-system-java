@@ -2,6 +2,11 @@ package M3;
 
 import M0.Log;
 import M1.ConfigManager;
+import M1.LogConfig;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
 
 /**
  * Log destination that handles file-based logging.

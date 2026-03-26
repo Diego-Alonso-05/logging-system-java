@@ -4,7 +4,9 @@ import M0.Log;
 import M1.ConfigManager;
 import M3.LogDestination;
 import M4.LogComponent;
+import M4.LogGroup;
 import M5.LogDestinationFactory;
+import M7.AlertLogDecorator;
 
 /**
  * Service responsible for logging operations.
