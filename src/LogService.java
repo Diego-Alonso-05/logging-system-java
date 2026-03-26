@@ -1,34 +1,95 @@
-
 /**
- * Service responsible for logging operations
+ * Service responsible for logging operations.
  * Delegates the storage of logs to a configurable
- * LogDestination, allowing dynamic behavior changes
+ * LogDestination, allowing dynamic behavior changes.
  */
-
-
-
 
 public class LogService {
 
     private LogDestination destination;
     private String currentDestinationType;
 
-    public LogService(LogDestination destination) {
-        this.destination = destination;
+    // 🌳 ROOT del árbol de logs
+    private LogGroup root;
+
+    public LogService(String type) {
+        if (type == null || type.isEmpty()) {
+            throw new IllegalArgumentException("Destination type cannot be null or empty");
+        }
+
+        this.currentDestinationType = type;
+        this.destination = LogDestinationFactory.getDestination(type);
+
+        // Inicializamos el árbol
+        this.root = new LogGroup("ROOT");
     }
 
-    public void setDestination(LogDestination destination) {
-        this.destination = destination;
+    public void setDestination(String type) {
+        if (type == null || type.isEmpty()) {
+            throw new IllegalArgumentException("Destination type cannot be null or empty");
+        }
+
+        this.currentDestinationType = type;
+        this.destination = LogDestinationFactory.getDestination(type);
     }
-    //Destination is the way the log will be stored and has its own save function that handles
-    //the log
+
+    /**
+     * Adds an alert decorator on top of the current destination.
+     */
+    public void addAlertDecorator() {
+        this.destination = new AlertLogDecorator(this.destination);
+    }
+
+    /**
+     * Añade un log o grupo al árbol (NO lo guarda aún).
+     */
+    public void addToTree(LogComponent component) {
+        if (component == null) {
+            throw new IllegalArgumentException("LogComponent cannot be null");
+        }
+
+        root.add(component);
+    }
+
+    /**
+     * Guarda todos los logs del árbol en el destino actual.
+     */
+    public void saveAll() {
+        for (Log log : root.getLogs()) {
+            destination.save(log);
+        }
+    }
+
+    /**
+     * Muestra el árbol completo de logs.
+     */
+    public void showTree() {
+        root.display("");
+    }
+
+    /**
+     * (Opcional) Limpiar el árbol después de guardar.
+     */
+    public void clearTree() {
+        this.root = new LogGroup("ROOT");
+    }
+
+    /**
+     * Logs directos (sigue funcionando como antes).
+     */
     public void log(LogComponent component) {
+        if (component == null) {
+            throw new IllegalArgumentException("LogComponent cannot be null");
+        }
+
         for (Log log : component.getLogs()) {
             destination.save(log);
         }
     }
 
-
+    /**
+     * Saves current state (Memento pattern).
+     */
     public LogMemento saveState() {
         return new LogMemento(
                 ConfigManager.INSTANCE.getConfig(),
@@ -36,8 +97,27 @@ public class LogService {
         );
     }
 
+    /**
+     * Restores a previously saved state.
+     */
     public void restoreState(LogMemento memento) {
+        if (memento == null) {
+            throw new IllegalArgumentException("Memento cannot be null");
+        }
+
         ConfigManager.INSTANCE.setConfig(memento.getConfig());
-        this.destination = LogDestinationFactory.getDestination(memento.getDestinationType());
+
+        String type = memento.getDestinationType();
+
+        if (type == null || type.isEmpty()) {
+            throw new IllegalStateException("Saved destination type is null or empty");
+        }
+
+        this.currentDestinationType = type;
+        this.destination = LogDestinationFactory.getDestination(type);
+    }
+
+    public String getCurrentDestinationType() {
+        return currentDestinationType;
     }
 }

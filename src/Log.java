@@ -1,11 +1,3 @@
-
-
-/**
- * Abstract base class for all log types.
- *Defines common attributes and enforces specific behavior
- * through the formatMessage method
- */
-
 public abstract class Log {
 
     protected LogLevel level;
@@ -14,8 +6,6 @@ public abstract class Log {
     public Log(String message) {
         this.message = message;
     }
-
-    public abstract void formatMessage();
 
     public String getMessage() {
         return message;

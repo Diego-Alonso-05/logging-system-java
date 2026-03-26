@@ -1,15 +1,14 @@
 import java.util.List;
 
-
 /*
  * Component interface for the Composite pattern.
- * Defines common operations for both individual logs
- * and groups of logs, allowing them to be treated uniformly
+ * Allows treating individual logs and groups uniformly.
  */
-import java.util.List;
-
 public interface LogComponent {
-    void display();
+
+    // Para mostrar el árbol con indentación
+    void display(String indent);
+
+    // Para aplanar los logs y guardarlos
     List<Log> getLogs();
 }
-
