@@ -104,7 +104,7 @@ public class LogService {
         return new LogMemento(
                 ConfigManager.INSTANCE.getConfig(),
                 currentDestinationType,
-                root   // 🔥 CLAVE: guardar árbol
+                root   
         );
     }
 
@@ -129,7 +129,7 @@ public class LogService {
         this.currentDestinationType = type;
         this.destination = LogDestinationFactory.getDestination(type);
 
-        // 🔥 CLAVE: restaurar árbol
+        
         this.root = memento.getRoot();
     }
 
