@@ -1,3 +1,7 @@
+package M6;
+
+import M1.LogConfig;
+
 public class LogMemento {
 
     private final LogConfig config;

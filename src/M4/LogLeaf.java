@@ -1,4 +1,8 @@
+package M4;
+
 import java.util.List;
+
+import M0.Log;
 
 /**
  * Leaf component representing a single log entry.

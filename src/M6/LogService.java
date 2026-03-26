@@ -1,3 +1,10 @@
+package M6;
+
+import M0.Log;
+import M1.ConfigManager;
+import M3.LogDestination;
+import M4.LogComponent;
+import M5.LogDestinationFactory;
 
 /**
  * Service responsible for logging operations

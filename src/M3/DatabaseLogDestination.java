@@ -1,4 +1,7 @@
+package M3;
 
+import M0.Log;
+import M1.ConfigManager;
 
 /**
  * Log destination that handles database storage.

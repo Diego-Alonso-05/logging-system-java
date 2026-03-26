@@ -1,11 +1,10 @@
-
+package M0;
 
 /**
  * Abstract base class for all log types.
- *Defines common attributes and enforces specific behavior
- * through the formatMessage method
+ * Defines common attributes and enforces specific behavior
+ * through the formatMessage method.
  */
-
 public abstract class Log {
 
     protected LogLevel level;

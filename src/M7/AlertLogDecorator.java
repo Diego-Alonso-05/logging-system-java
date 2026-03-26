@@ -1,3 +1,10 @@
+package M7;
+
+import M0.Log;
+import M0.LogDecorator;
+import M0.LogLevel;
+import M3.LogDestination;
+
 public class AlertLogDecorator extends LogDecorator {
 
     public AlertLogDecorator(LogDestination wrapped) {

@@ -1,3 +1,4 @@
+package M1;
 
 /**
  * Singleton that manages the global logging configuration.

@@ -1,3 +1,4 @@
+package M1;
 
 /**
  * Represents the configuration of the logging system.

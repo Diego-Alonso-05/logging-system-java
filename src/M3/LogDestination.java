@@ -1,5 +1,6 @@
+package M3;
 
-
+import M0.Log;
 
 /**
  * Interface for log storage strategies.

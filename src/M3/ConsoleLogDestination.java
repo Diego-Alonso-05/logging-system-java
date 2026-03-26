@@ -1,4 +1,6 @@
+package M3;
 
+import M0.Log;
 
 /**
  * Log destination that outputs logs to the console.

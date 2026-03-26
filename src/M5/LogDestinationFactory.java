@@ -1,5 +1,13 @@
+package M5;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import M3.AzureLogDestination;
+import M3.ConsoleLogDestination;
+import M3.DatabaseLogDestination;
+import M3.FileLogDestination;
+import M3.LogDestination;
 
 /**
  * Factory that manages and reuses LogDestination instances.

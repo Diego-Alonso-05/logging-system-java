@@ -1,3 +1,7 @@
+package M2;
+
+import M0.Log;
+import M0.LogLevel;
 
 /**
  * Factory class responsible for creating Log objects.
