@@ -14,8 +14,6 @@ public abstract class Log {
         this.message = message;
     }
 
-    public abstract void formatMessage();
-
     public String getMessage() {
         return message;
     }

@@ -1,20 +1,13 @@
 package M4;
 
+import M0.Log;
 import java.util.ArrayList;
 import java.util.List;
-
-import M0.Log;
 
 
 /**
  * Composite component representing a group of logs.
- * Can contain individual logs or other groups,
- * forming a hierarchical structure
- * Supports aggregation of logs for filtering
- * and analysis purposes
  */
-
-
 public class LogGroup implements LogComponent {
 
     private String name;
@@ -33,13 +26,13 @@ public class LogGroup implements LogComponent {
     }
 
     @Override
-    public void display() {
-        System.out.println("Group: " + name);
+    public void display(String indent) {
+        System.out.println(indent + "[" + name + "]");
+
         for (LogComponent c : components) {
-            c.display();
+            c.display(indent + "  ");
         }
     }
-
 
     @Override
     public List<Log> getLogs() {
@@ -51,6 +44,4 @@ public class LogGroup implements LogComponent {
 
         return allLogs;
     }
-
-
 }
