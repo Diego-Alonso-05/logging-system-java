@@ -11,6 +11,7 @@
 public class LogService {
 
     private LogDestination destination;
+    private String currentDestinationType;
 
     public LogService(LogDestination destination) {
         this.destination = destination;
@@ -25,5 +26,18 @@ public class LogService {
         for (Log log : component.getLogs()) {
             destination.save(log);
         }
+    }
+
+
+    public LogMemento saveState() {
+        return new LogMemento(
+                ConfigManager.INSTANCE.getConfig(),
+                currentDestinationType
+        );
+    }
+
+    public void restoreState(LogMemento memento) {
+        ConfigManager.INSTANCE.setConfig(memento.getConfig());
+        this.destination = LogDestinationFactory.getDestination(memento.getDestinationType());
     }
 }
