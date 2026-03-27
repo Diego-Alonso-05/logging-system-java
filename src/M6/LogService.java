@@ -19,7 +19,7 @@ public class LogService {
     private LogDestination destination;
     private String currentDestinationType;
 
-    // 🌳 ROOT del árbol de logs
+    // ROOT del árbol de logs
     private LogGroup root;
 
     public LogService(String type) {
