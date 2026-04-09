@@ -19,7 +19,7 @@ public class LogService {
     private LogDestination destination;
     private String currentDestinationType;
 
-    // ROOT del árbol de logs
+    // Logs tree root
     private LogGroup root;
 
     public LogService(String type) {
@@ -30,7 +30,7 @@ public class LogService {
         this.currentDestinationType = type;
         this.destination = LogDestinationFactory.getDestination(type);
 
-        // Inicializamos el árbol
+        // Tree starting
         this.root = new LogGroup("ROOT");
     }
 
@@ -62,7 +62,7 @@ public class LogService {
     }
 
     /**
-     * Guarda todos los logs del árbol en el destino actual.
+     * Save all tree logs on the actual objective
      */
     public void saveAll() {
         for (Log log : root.getLogs()) {
@@ -71,21 +71,21 @@ public class LogService {
     }
 
     /**
-     * Muestra el árbol completo de logs.
+     * Shows all the logs tree
      */
     public void showTree() {
         root.display("");
     }
 
     /**
-     * Limpiar el árbol.
+     * Clean the tree
      */
     public void clearTree() {
         this.root = new LogGroup("ROOT");
     }
 
     /**
-     * Logs directos (sin usar árbol).
+     * Directly logs (without using tree)
      */
     public void log(LogComponent component) {
         if (component == null) {
@@ -116,7 +116,7 @@ public class LogService {
             throw new IllegalArgumentException("Memento cannot be null");
         }
 
-        // Restaurar configuración
+        // Restores configuration
         ConfigManager.INSTANCE.setConfig(memento.getConfig());
 
         String type = memento.getDestinationType();
@@ -125,7 +125,7 @@ public class LogService {
             throw new IllegalStateException("Saved destination type is null or empty");
         }
 
-        // Restaurar destino
+        // Restores objective
         this.currentDestinationType = type;
         this.destination = LogDestinationFactory.getDestination(type);
 

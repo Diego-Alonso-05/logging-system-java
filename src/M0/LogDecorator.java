@@ -9,4 +9,7 @@ public abstract class LogDecorator implements LogDestination {
     public LogDecorator(LogDestination wrapped) {
         this.wrapped = wrapped;
     }
+
+    @Override
+    public abstract void save(Log log);
 }

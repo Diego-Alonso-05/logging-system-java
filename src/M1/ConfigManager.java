@@ -12,7 +12,7 @@ public enum ConfigManager {
 
     private LogConfig config;
 
-    // Constructor del enum (se ejecuta una sola vez)
+    // Enum constructor
     ConfigManager() {
         config = new LogConfig(
                 "C:\\Users\\di17j\\OneDrive\\Escritorio\\JavaProyects\\Registo_Logs\\logs\\logs.txt",

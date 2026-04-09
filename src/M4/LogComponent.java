@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface LogComponent {
 
-    // Para mostrar el árbol con indentación
+    // Show tree with indentation
     void display(String indent);
 
-    // Para aplanar los logs y guardarlos
+    // Plain logs and save
     List<Log> getLogs();
 }

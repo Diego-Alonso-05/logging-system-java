@@ -40,7 +40,7 @@ public class LogConfig {
         return azureConnectionString;
     }
 
-    // Setters (solo si quieres permitir cambios en runtime)
+    // Setters 
     public void setLogFilePath(String logFilePath) {
         this.logFilePath = logFilePath;
     }
